@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<!DOCTYPE html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+
+
+{% extends "layout.html" %}
+
+{% block content %}
+<body>
+<h1><Strong>Enter a Comic</Strong></h1>
+    <p>
+
+    </p>
+</body>
+
+
+{% if submitted %}
+    <p class="success">
+    <strong>Comic has been added. Thank you.</strong>
+        <p>
+            <a href="."><strong>Click here to enter another comic.</strong></a>
+        </p>
+    </p>
+{% else %}
+   <form action="" method="post" novalidate>
+   <table>
+     {{ form.as_table }}
+     <tr>
+       <td>&nbsp;</td>
+       <td><input type="submit" value="Submit"></td>
+     </tr>
+   </table>
+   {% csrf_token %}
+   </form>
+{% endif %}
+
+
+{% endblock content %}

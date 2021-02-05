@@ -30,7 +30,7 @@ class BootstrapAuthenticationForm(AuthenticationForm):
 
         
     
-    ##############Garage Car Input Forms###############
+    ##############Comic  Input Forms###############
 class ComicInputForm(forms.ModelForm):
     class Meta:
         model = ComicInput
@@ -42,3 +42,28 @@ class ComicInputForm(forms.ModelForm):
         #article = Article.objects.get(pk=1)
         #form = ArticleForm(instance=article)
 
+class TitleChoiceField(forms.Form):
+
+    titles = forms.ModelChoiceField(
+        queryset=ComicInput.objects.values_list("Title", flat=True).distinct().order_by('Title'),
+        #empty_label=None
+    )
+
+class NotesChoiceField(forms.Form):
+
+    sellingnotes = forms.ModelChoiceField(
+        queryset=ComicInput.objects.values_list("SellingNotes", flat=True).distinct().order_by('SellingNotes'),
+        #empty_label=None
+    )
+
+class PublisherChoiceField(forms.Form):
+
+    publisher = forms.ModelChoiceField(
+        queryset=ComicInput.objects.values_list("Publisher", flat=True).distinct().order_by('Publisher'),
+        #empty_label=None
+    )
+
+class editform(forms.ModelForm):
+    class Meta:
+        model=ComicInput
+        fields="__all__"

@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+{% extends "app/layout.html" %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+    
+    
+        var hoverSize = [200, 400];
+            
+        $('img').hover(function() {
+            $(this).css({
+                height: hoverSize[0],
+                width: hoverSize[1]
+            });
+        }, function() {
+            $(this).css({
+                height: "",
+                width: ""
+            });
+        });
+</head>
+{% load static %}
+{% block content %}
+
+<title>Search Results</title>
+
+
+ 
+
+
+
+
+
+<body>
+    <h1><Strong>Here are your comics;</Strong></h1>
+    <div class="panel-heading">
+         <div class="panel-title pull-left">
+        
+            <form method="get" action="{% url 'ComicInventory' %}">
+                {{ publisher_list }}
+        
+        
+                <input type="submit" value="Filter">
+            </form>
+         </div>
+         
+        
+        <div class="panel-title pull-right">
+            <form method="get" action="{% url 'ComicInventory' %}">
+                {{ sellingnotes_list }}
+        
+                <input type="submit" value="Filter">
+            </form>
+        </div>
+        <div class="panel-title pull-right">
+
+            <form method="get" action="{% url 'ComicInventory' %}">
+                {{ title_list }}
+        
+       
+                <input type="submit" value="Filter">
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Publisher</th>
+                <th scope="col">Title</th>
+                <th scope="col">Number</th>
+                <th scope="col">Edition</th>
+                <th scope="col">Grade</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Value</th>
+                <th scope="col">Story Line</th>
+                <th scope="col">Selling Notes</th>
+                <th scope="col">Cover</th>
+                <th scope="col"><b>Total Value: {{DisplaySumValue}} </b></th>
+            </tr>
+        </thead>
+        {% for inv in  displayInventory %}
+        <tbody class="table table-hover">
+            <tr>
+                <td>{{inv.Publisher}}</td>
+                <td>{{inv.Title}}</td>
+                <td>{{inv.Number}}</td>
+                <td>{{inv.Edition}}</td>
+                <td>{{inv.Grade}}</td>
+                <td>{{inv.Cost}}</td>
+                <td>{{inv.Value}}</td>
+                <td>{{inv.StoryLine}}</td>
+                <td>{{inv.SellingNotes}}</td>
+                <td> <a href="{{inv.BackPic.url}}" target="_blank"> <img src="{{ inv.BackPic.url}}" alt="{{inv.Publisher}} image",height="60", width="100" /></a></td>
+                <td> <a href="{{inv.CoverPic.url}}" target="_blank"><img src="{{ inv.CoverPic.url}}" alt="{{inv.Publisher}} image",height="60", width="100" /></a></td>
+                <td> <a href="/edit/{{inv.id}}">Edit</a> </td>
+                
+            </tr>
+            
+            {% endfor %}
+       
+        </tbody>
+        <tfoot>
+           <tr>
+               <td><b>Total Value: {{DisplaySumValue}} </b></td>
+           </tr>
+        </tfoot>
+    </table>
+
+
+
+    </div>
+</body>
+</html>
+
+{% endblock %}

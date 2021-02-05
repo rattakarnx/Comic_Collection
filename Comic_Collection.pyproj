@@ -38,8 +38,9 @@
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="app\admin.py" />
     <Compile Include="manage.py" />
-    <Compile Include="Comic_Collection\__init__.py" />
+    <Compile Include="app\templates\app\__init__.py" />
     <Compile Include="Comic_Collection\settings.py" />
     <Compile Include="Comic_Collection\urls.py" />
     <Compile Include="Comic_Collection\wsgi.py" />
@@ -58,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\templates\app\comicinput.html" />
+    <Content Include="app\templates\app\viewer.html" />
+    <Content Include="app\templates\app\edit.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

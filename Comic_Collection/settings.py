@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'import_export',
 ]
 
 # Middleware framework
@@ -60,8 +61,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['C:/Users/johnn/source/repos/Comic_Collection/app/templates/',
-                 'C:/Users/johnn/source/repos/Comic_Collection/app/templates/app',],
-        #'APP_DIRS': True,
+                 'C:/Users/johnn/source/repos/Comic_Collection/app/templates/app',
+                 'C:/Users/johnn/source/repos/Comic_Collection/app/templates/app/static',],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -76,11 +78,11 @@ TEMPLATES = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATIC_URL = "/static/"
-STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
+STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['/static/']))
 
 #Media files - comic photos#
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
-MEDIA_URL = '/uploads/'
+MEDIA_URL = "/uploads/"
+MEDIA_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['/uploads/']))
 
 ##### MAX Field Transactions - Alllow large product operations, while considering security ###
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 4500
@@ -120,7 +122,3 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-STATIC_URL = '/static/'
-STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))

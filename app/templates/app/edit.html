@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+{% extends "app/layout.html" %}
+
+{% block content %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Update Collection Record</title>
+</head>
+<body>
+    <h1>Update your Comic</h1>
+
+
+    <div class="container">
+        <form method="POST" action="/update/{{ComicInput.id}}" novalidate enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Input</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td>ID- Read Only</td>
+                    <td><input type="text" name="id" value="{{ComicInput.id}}" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Publisher</td>
+                    <td><input type="text" name="Publisher" value="{{ComicInput.Publisher}}" /></td>
+                </tr>
+                <tr>
+                    <td>Title</td>
+                    <td><input type="text" name="Title" value="{{ComicInput.Title}}" /></td>
+                </tr>
+                <tr>
+                    <td>Number</td>
+                    <td><input type="text" name="Number" value="{{ComicInput.Number}}" /></td>
+                </tr>
+                <tr>
+                    <td>Series</td>
+                    <td><input type="text" name="Series" value="{{ComicInput.Series}}" /></td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td><input type="text" name="Type" value="{{ComicInput.Type}}" /></td>
+                </tr>
+                <tr>
+                    <td>Edition</td>
+                    <td><input type="text" name="Edition" value="{{ComicInput.Edition}}" /></td>
+                </tr>
+                <tr>
+                    <td>Grade</td>
+                    <td><input type="text" name="Grade" value="{{ComicInput.Grade}}" /></td>
+                </tr>
+                <tr>
+                    <td>Cost</td>
+                    <td><input type="text" name="Cost" value="{{ComicInput.Cost}}" /></td>
+                </tr>
+                <tr>
+                    <td>Value</td>
+                    <td><input type="text" name="Value" value="{{ComicInput.Value}}" /></td>
+                </tr>
+                <tr>
+                    <td>SoldAmt</td>
+                    <td><input type="text" name="SoldAmt" value="{{ComicInput.SoldAmt}}" /></td>
+                </tr>
+                <tr>
+                    <td>StoryLine</td>
+                    <td><input type="text" name="StoryLine" value="{{ComicInput.StoryLine}}" /></td>
+                </tr>
+                <tr>
+                    <td>SellingNotes</td>
+                    <td><input type="text" name="SellingNotes" value="{{ComicInput.SellingNotes}}" /></td>
+                </tr>
+                <tr>
+                    <td>BackPic.url</td>
+                    <td><input type="text" name="BackPic" value="{{ComicInput.BackPic}}" /></td>
+                </tr>
+                <tr>
+                    <td>CoverPic.url</td>
+                    <td><input type="text" name="CoverPic" value="{{ComicInput.CoverPic}}" /></td>
+                </tr>
+
+                <tr>
+                    <td>ContentPic.url</td>
+                    <td><input type="text" name="ContentPic" value="{{ComicInput.ContentPic}}" /></td>
+
+                <tr>
+                    <td>Year</td>
+                    <td><input type="text" name="year" value="{{ComicInput.year}}" /></td>
+                </tr>
+                <tr>
+                    <td>GradeBody</td>
+                    <td><input type="text" name="GradeBody" value="{{ComicInput.GradeBody}}" /></td>
+
+                </tr>
+                <tr>
+                    <td>GradeCode</td>
+                    <td><input type="text" name="GradeCode" value="{{ComicInput.GradeCode}}" /></td>
+                </tr>
+
+            </table>
+            <input type="submit" value="Update"/> | <a href="{% url 'ComicInventory' %}"> View Collection</a>
+        
+        {%if messages%}
+            {%for updaterecord in messages%}
+            <h3 style="color: green;">{{updaterecord}}</h3> 
+            {%endfor%}
+        {%endif%}
+        
+        
+        </form>
+    </div>
+</body>
+
+{% endblock %}
+</html>
